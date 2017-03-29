@@ -13,13 +13,13 @@ import android.widget.ListView;
 public class LivingRoomActivity extends AppCompatActivity {
     private Context ctx;
     private ListView livingroomlist;
-    private String[] livingroom = {"Lamp   status", "TV", "Window Blinds"};
+    private String[] livingroom = {"Lamp On/Off", "Lamp Dimmable", "Lamp Colorful", "TV", "Window Blinds"};
     protected Boolean isTablet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_items);
+        setContentView(R.layout.activity_living_room);
         ctx = this;
         isTablet = (findViewById(R.id.fragmentHolder)!=null); // boolean variable to tell if it's a tablet
         livingroomlist = (ListView)findViewById(R.id.livinglists);
@@ -28,20 +28,30 @@ public class LivingRoomActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 if(!isTablet) {//phone
                     switch (position) {
-                        case 0: //lamp
-                            Intent lampActivity = new Intent(ctx, LampActivity.class);
-                            lampActivity.putExtra("Status", "Off");
-                            startActivityForResult(lampActivity, 10);
+                        case 0: //lamp1
+                            Intent lamp1intent = new Intent(ctx, Lamp1Activity.class);
+                            lamp1intent.putExtra("Status", "Off");
+                            startActivityForResult(lamp1intent, 5);
                             break;
-                        case 1: // tv
+                        case 1: //lamp2
+                            Intent lamp2intent = new Intent(ctx, Lamp2Activity.class);
+                            lamp2intent.putExtra("Status", "Off");
+                            startActivityForResult(lamp2intent, 10);
+                            break;
+                        case 2: //lamp3
+                            Intent lamp3intent= new Intent(ctx, Lamp3Activity.class);
+                            lamp3intent.putExtra("Status", "Off");
+                            startActivityForResult(lamp3intent, 15);
+                            break;
+                        case 3: // tv
                             Intent tvActivity = new Intent(ctx, TVActivity.class);
                             tvActivity.putExtra("TV State", "Off");
                             startActivityForResult(tvActivity, 20);
                             break;
-                        case 2: // blinds
+                        case 4: // blinds
                             Intent blindsActivity = new Intent(ctx, BlindsActivity.class);
                             blindsActivity.putExtra("Blinds Status", "Off");
-                            startActivityForResult(blindsActivity, 30);
+                            startActivityForResult(blindsActivity, 15);
                             break;
                     }
                 }else{// tablet

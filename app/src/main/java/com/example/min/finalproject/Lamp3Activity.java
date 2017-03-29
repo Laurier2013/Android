@@ -2,28 +2,24 @@ package com.example.min.finalproject;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.SeekBar;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 // Anupam Chugh, [online]Feb 25, 2016, www.journaldev.com/10324/android-snackbar-example-tutorial, [Accessed ] Mar 26, 2017
 
 
-public class LampActivity extends AppCompatActivity implements ColorPickerDialog.OnColorChangedListener{
+public class Lamp3Activity extends AppCompatActivity implements ColorPickerDialog.OnColorChangedListener{
     private Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lamp);
+        setContentView(R.layout.activity_lamp3);
 
         ctx = this;
         Button lampButton = (Button) findViewById(R.id.livinglampbutton);
@@ -44,26 +40,6 @@ public class LampActivity extends AppCompatActivity implements ColorPickerDialog
             }
         });
 
-        Switch lampSwitch = (Switch) findViewById(R.id.lampSwitch);
-        lampSwitch.setSelected(true);
-        lampSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                CharSequence text;
-                int duration;
-
-                if(isChecked){
-                    text = "Lamp is On";
-                    duration = Toast.LENGTH_SHORT;
-                }else{
-                    text = "Lamp is Off";
-                    duration = Toast.LENGTH_SHORT;
-                }
-
-                Toast toast = Toast.makeText(LampActivity.this, text, duration);
-                toast.show();
-            }
-        });
 
         final SeekBar lampDim = (SeekBar) findViewById(R.id.lampDimmable);
         lampDim.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
@@ -101,31 +77,31 @@ public class LampActivity extends AppCompatActivity implements ColorPickerDialog
     public void onStart(){
 
         super.onStart();
-        Log.i("LampActivity", "onStart");
+        Log.i("Lamp3Activity", "onStart");
     }
 
     public void onResume(){
 
         super.onResume();
-        Log.i("LampActivity", "onResume");
+        Log.i("Lamp3Activity", "onResume");
     }
 
     public void onPause(){
 
         super.onPause();
-        Log.i("LampActivity", "onPause");
+        Log.i("Lamp3Activity", "onPause");
     }
 
     public void onStop(){
 
         super.onStop();
-        Log.i("LampActivity", "onStop");
+        Log.i("Lamp3Activity", "onStop");
     }
 
     public void onDestroy(){
 
         super.onDestroy();
-        Log.i("LampActivity", "onDestroy");
+        Log.i("Lamp3Activity", "onDestroy");
     }
 
     @Override
