@@ -11,8 +11,8 @@ public class MainActivity  extends AppCompatActivity implements ColorPickerDialo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //ColorPickerDialog color = new ColorPickerDialog(this,this, "picker", Color.BLACK,Color.WHITE);
-        //color.show();
+        ColorPickerDialog color = new ColorPickerDialog(this,this, "picker", Color.BLACK,Color.WHITE);
+        color.show();
     }
 
     @Override

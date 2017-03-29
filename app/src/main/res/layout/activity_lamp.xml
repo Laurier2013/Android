@@ -12,7 +12,7 @@
     tools:context="com.example.min.finalproject.LampActivity">
 
     <TextView
-        android:text="On/Off Lamp"
+        android:text="@string/living_onofflamp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lamp1" />
@@ -23,7 +23,7 @@
         android:id="@+id/lampSwitch" />
 
     <TextView
-        android:text="Dimmable Lamp"
+        android:text="@string/living_dimlamp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lamp2" />
@@ -34,15 +34,28 @@
         android:id="@+id/lampDimmable" />
 
     <TextView
-        android:text="Colorful Lamp"
+        android:text="@string/living_colorlamp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lamp3" />
 
-    <SeekBar
+    <TextView
+        android:id="@+id/colorlamptext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/lampColor" />
+        android:text="@string/living_lampcolorshow"/>
+
+    <Button
+        android:id="@+id/colorlampbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/living_lampcolorchoose" />
+
+    <Button
+        android:id="@+id/livinglampbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/living_lamplogout" />
 
 
 </LinearLayout>

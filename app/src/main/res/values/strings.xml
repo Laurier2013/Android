@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">FinalProject</string>
+    <string name="living_blinds">Window Blinds Control</string>
+    <string name="living_onofflamp">On/Off Lamp</string>
+    <string name="living_dimlamp">Dimmable Lamp</string>
+    <string name="living_colorlamp">Colorful Lamp</string>
+    <string name="living_tvcontrol">TV Control</string>
+    <string name="living_tvonoff">On/Off</string>
+    <string name="living_lamplogout">Go Back</string>
+    <string name="living_tvlogout">Go Back</string>
+    <string name="living_blindslogout">Go Back</string>
+    <string name="living_lampcolorshow">Here shows your color choice</string>
+    <string name="living_lampcolorchoose">Color Choose</string>
 </resources>

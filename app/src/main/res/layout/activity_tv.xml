@@ -12,13 +12,13 @@
     tools:context="com.example.min.finalproject.TVActivity">
 
     <TextView
-        android:text="TV Control"
+        android:text="@string/living_tvcontrol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv" />
 
     <Switch
-        android:text="On/Off"
+        android:text="@string/living_tvonoff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/switchTV" />
@@ -31,4 +31,10 @@
         android:hint="Enter Channel Number"
         android:inputType="number"
         tools:inputType="number" />
+
+    <Button
+        android:id="@+id/tvbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/living_tvlogout" />
 </LinearLayout>

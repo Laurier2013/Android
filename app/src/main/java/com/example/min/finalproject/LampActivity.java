@@ -1,22 +1,48 @@
 package com.example.min.finalproject;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
+// Anupam Chugh, [online]Feb 25, 2016, www.journaldev.com/10324/android-snackbar-example-tutorial, [Accessed ] Mar 26, 2017
 
 
+public class LampActivity extends AppCompatActivity implements ColorPickerDialog.OnColorChangedListener{
+    private Context ctx;
 
-public class LampActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lamp);
+
+        ctx = this;
+        Button lampButton = (Button) findViewById(R.id.livinglampbutton);
+        lampButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                setResult(0);
+                finish();
+            }
+        });
+
+        Button colorlampbutton = (Button) findViewById(R.id.colorlampbutton);
+        colorlampbutton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {// choose color dialog
+                ColorPickerDialog color = new ColorPickerDialog(ctx,( ColorPickerDialog.OnColorChangedListener)ctx, "picker", Color.BLACK,Color.WHITE);
+                color.show();
+            }
+        });
 
         Switch lampSwitch = (Switch) findViewById(R.id.lampSwitch);
         lampSwitch.setSelected(true);
@@ -73,22 +99,39 @@ public class LampActivity extends AppCompatActivity {
     }
 
     public void onStart(){
+
         super.onStart();
+        Log.i("LampActivity", "onStart");
     }
 
     public void onResume(){
+
         super.onResume();
+        Log.i("LampActivity", "onResume");
     }
 
     public void onPause(){
+
         super.onPause();
+        Log.i("LampActivity", "onPause");
     }
 
     public void onStop(){
+
         super.onStop();
+        Log.i("LampActivity", "onStop");
     }
 
     public void onDestroy(){
+
         super.onDestroy();
+        Log.i("LampActivity", "onDestroy");
+    }
+
+    @Override
+    public void colorChanged(String key, int color) {
+        // TODO Auto-generated method stub
+        TextView textView = (TextView)findViewById(R.id.colorlamptext);
+        textView.setTextColor(color);
     }
 }
