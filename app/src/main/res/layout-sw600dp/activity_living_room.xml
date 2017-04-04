@@ -12,18 +12,18 @@
 
     <ListView
         android:id="@+id/livinglists"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="match_parent" />
 
 
     <FrameLayout
-        android:id="@+id/fragmentHolder"
-        android:layout_width="wrap_content"
+        android:id="@+id/livingroomfragmentHolder"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_blue_light"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@id/livinglists"
-        android:layout_alignParentBottom="true"/>
+         />
 
 
 </RelativeLayout>

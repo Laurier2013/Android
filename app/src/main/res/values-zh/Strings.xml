@@ -14,4 +14,6 @@
     <string name="living_lampreturn">返回</string>
     <string name="living_lamp2dim">灯光调控</string>
     <string name="living_lamp2logout">返回</string>
+    <string name="living_deletemessage">删除</string>
+    <string name="living_roomcustombt">自选</string>
 </resources>

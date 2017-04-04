@@ -1,39 +1,72 @@
 package com.example.min.finalproject;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
-public class Lamp2Activity extends AppCompatActivity {
-    private Context ctx;
+public class Lamp2Activity extends Fragment {
+    private int lamp2counter;
+    private int lamp2progress;
+    private int isTablet;
+    private LivingRoomActivity livingroomwindow;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public  Lamp2Activity () {}
+
+    public Lamp2Activity(LivingRoomActivity cw){
+        livingroomwindow = cw;
+    }
+
+
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lamp2);
+        Bundle bun = getArguments();
+        lamp2counter = bun.getInt("Lamp2Counter");
+        lamp2progress = bun.getInt("Lamp2Progress");
+        isTablet = bun.getInt("IsTablet", 0);
+    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+        View gui = inflater.inflate(R.layout.activity_lamp2, null);
 
-        ctx = this;
-        Button lampButton = (Button) findViewById(R.id.lamp2logout);
+        Button lampButton = (Button) gui.findViewById(R.id.lamp2logout);
         lampButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                setResult(0);
-                finish();
+                final SharedPreferences prefs = getActivity().getSharedPreferences("livingroomFile", Context.MODE_PRIVATE);
+                //Get an editor object for writing to the file:
+                SharedPreferences.Editor writer = prefs.edit();
+                writer.putInt("Lamp2Progress", lamp2progress);
+                writer.putInt("Lamp2Counter",++ lamp2counter);
+                //Write the file:
+                writer.commit();
+
+                if(isTablet == 0) {
+                    Intent dataBack = new Intent();
+                    dataBack.putExtra("Lamp2Progress", lamp2progress);
+                    getActivity().setResult(0, dataBack);
+                    getActivity().finish();
+                }else{
+                    livingroomwindow.synclamp2(lamp2progress);
+                    livingroomwindow.removeFragmentLamp2(Lamp2Activity.this);
+                }
             }
         });
 
-        final SeekBar lampDim = (SeekBar) findViewById(R.id.lamp2seekBar);
+        final SeekBar lampDim = (SeekBar) gui.findViewById(R.id.lamp2seekBar);
+        lampDim.setProgress(lamp2progress);
         lampDim.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 update(lampDim.getRootView());
+                lamp2progress = progress;
             }
 
             @Override
@@ -49,7 +82,7 @@ public class Lamp2Activity extends AppCompatActivity {
 
             public void update(View v){
                 Snackbar snackbar = Snackbar
-                        .make(v, "Lamp is tuned", Snackbar.LENGTH_LONG)
+                        .make(v, "Lamp is tuned to " + lamp2progress, Snackbar.LENGTH_LONG)
                         .setAction("UNDO", new View.OnClickListener(){
                             @Override
                             public void onClick(View view){
@@ -60,6 +93,7 @@ public class Lamp2Activity extends AppCompatActivity {
                 snackbar.show();
             }
         });
+        return gui;
     }
 
     public void onStart(){
